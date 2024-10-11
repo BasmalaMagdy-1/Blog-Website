@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Welcome, Admin {{ user.username }}!</h1>
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Admin Dashboard</h5>
+                </div>
+                <div class="card-body">
+                    <p>This is your admin dashboard. You can manage users, blogs, and other settings from here.</p>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <a href="{{ url_for('admin.manage_users') }}" class="btn btn-outline-primary btn-block">Manage Users</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="{{ url_for('admin.manage_blogs') }}" class="btn btn-outline-primary btn-block">Manage Blogs</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

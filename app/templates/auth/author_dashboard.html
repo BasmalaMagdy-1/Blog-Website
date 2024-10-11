@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Author Dashboard{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Author Dashboard</h2>
+    
+    <h3>Your Blogs</h3>
+    <ul>
+        {% for blog in current_user.blogs %}
+            <li>
+                <a href="{{ url_for('blog.view', blog_id=blog.id) }}">{{ blog.title }}</a>
+                <a href="{{ url_for('blog.edit', blog_id=blog.id) }}" class="btn btn-primary">Edit</a>
+                <form method="POST" action="{{ url_for('blog.delete', blog_id=blog.id) }}" style="display:inline;">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ url_for('blog.create') }}" class="btn btn-success">Create New Blog</a>
+</div>
+{% endblock %}
